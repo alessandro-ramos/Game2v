@@ -1,0 +1,54 @@
+@model Game2v.Model.Register
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<h2 class="display-4">Registrar Novo Usuário</h2>
+@{if (ViewBag.Message != null)
+{
+    @:<div class="alert alert-warning" role="alert">@ViewBag.Message</div>
+}}
+
+<form asp-controller="Security" asp-action="Register" method="post">
+    <div class="form-group">
+        <label asp-for="UserName"></label>
+        <input type="text" asp-for="UserName" class="form-control"/>
+        <span asp-validation-for="UserName" class="form-text text-muted"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input type="password" asp-for="Password" class="form-control"/>
+        <span asp-validation-for="Password" class="form-text text-muted"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ConfirmPassword"></label>
+        <input type="password" asp-for="ConfirmPassword" class="form-control"/>
+        <span asp-validation-for="ConfirmPassword" class="form-text text-muted"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FullName"></label>
+        <input type="text" asp-for="FullName" class="form-control"/>
+        <span asp-validation-for="FullName" class="form-text text-muted"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email"></label>
+        <input type="text" asp-for="Email" class="form-control"/>
+        <span asp-validation-for="Email" class="form-text text-muted"></span>
+    </div>
+  
+    <div class="form-group">
+        <label asp-for="BirthDate"></label>
+        <input type="text" asp-for="BirthDate" class="form-control"/>
+        <span asp-validation-for="BirthDate" class="form-text text-muted"></span>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-controller="Security" asp-action="SignIn" class="btn btn-secondary">Entrar</a>
+
+</form>

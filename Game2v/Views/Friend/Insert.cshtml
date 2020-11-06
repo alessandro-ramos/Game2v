@@ -1,0 +1,23 @@
+@model Game2v.Model.Friend
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<h2 class="display-4">Inserir Novo Amigo</h2>
+@{if (ViewBag.Message != null)
+{
+    @:<div class="alert alert-warning" role="alert">@ViewBag.Message</div>
+}}
+
+<form asp-controller="Friend" asp-action="Insert" method="post">
+    <div class="form-group">
+        <label asp-for="FriendName"></label>
+        <input type="text" asp-for="FriendName" class="form-control"/>
+        <span asp-validation-for="FriendName" class="form-text text-muted"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-controller="Friend" asp-action="List" class="btn btn-secondary">Voltar</a>
+
+</form>

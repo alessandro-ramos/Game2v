@@ -1,0 +1,36 @@
+@model Game2v.Model.Friend
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<h2 class="display-4">Alterar Amigo</h2>
+@{if (ViewBag.Message != null)
+{
+    @:<div class="alert alert-warning" role="alert">@ViewBag.Message</div>
+}}
+
+<form asp-controller="Friend" asp-action="Update" method="post">
+    <div class="form-group">
+        <label asp-for="FriendId"></label>
+        <input type="hidden" asp-for="FriendId" class="form-control"/>
+        <span class="form-control-plaintext">@Model.FriendId</span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FriendName"></label>
+        <input type="text" asp-for="FriendName" class="form-control"/>
+        <span asp-validation-for="FriendName" class="form-text text-muted"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FriendId"></label>
+        <select asp-for="FriendId" asp-items="@ViewBag.Friends" class="form-control">
+            <option value="">Com quem está o jogo?</option>
+        </select>
+        <span asp-validation-for="FriendId" class="message" class="form-text text-muted"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a asp-controller="Friend" asp-action="List" class="btn btn-secondary">Voltar</a>
+
+</form>

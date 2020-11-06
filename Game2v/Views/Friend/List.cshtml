@@ -1,0 +1,32 @@
+@model List<Game2v.Model.Friend>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
+<h1 class="display-4">Lista de Amigos</h1>
+@{
+if (TempData["HasMessage"] != null)
+{
+    @:<div class="alert alert-warning" role="alert">@TempData["Message"]</div>
+}
+}
+<a asp-controller="Friend" asp-action="Insert"  class="btn btn-primary">Novo</a>
+<br /><br />
+<table class="table">
+    <tr>
+        <th>Id do Amigo</th>
+        <th>Nome</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.FriendId</td>
+            <td>@item.FriendName</td>
+            <td>
+                <a asp-controller="friend" asp-action="update" asp-route-id="@item.FriendId" class="btn btn-outline-primary">Abrir</a>
+                <a asp-controller="friend" asp-action="delete" asp-route-id="@item.FriendId" class="btn btn-outline-danger">Excluir</a>
+            </td>
+        </tr>
+    }
+</table>
